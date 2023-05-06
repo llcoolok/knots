@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+}
+
+.title {font-size: xx-large;
+}
+.center {
+  text-align: center;
+}
+
+.everything {
+  max-width: 450px;
+  margin: 75px auto 50px;
+  text-align: center;
+  position: center;
+}
+
+
+.everything .content {
+  background: #F5E7D3;
+  border: 1px solid rgba(92, 75, 39, 0.4);
+  padding: 24px;
+  position: relative;
+}
+
+.container {display: inline-flex
+}
+
+
+.scroll {
+  width: 100px;
+  height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.scroll > div {
+  width: 300px;
+  height: 200px;
+}
+
+
+.scroll {
+    height: 75%;
+    overflow-x: scroll;    
+    white-space: nowrap;
+    width: 100%;
+}
+
+.scroll img {
+    height: 60%;
+    vertical-align: top; /* this prevents vertical whitespace */
+}
+
+img {
+
+    width:  450px;
+    height: 500px;
+    object-fit: cover;
+}
+
+.column {float: left;}
+.left {width:25%}
+.right {width=75%}
