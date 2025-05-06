@@ -1,26 +1,34 @@
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+}
 
-<!DOCTYPE html>
-<html class="wf-initial-load">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+body {
+    font-family: 'Your Font', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
 
-		
-			<title>Template K384 copy </title>
-			<script>window.__PRELOADED_STATE__={"structure":{"byParent":{"root":[]},"bySort":{},"indexById":{},"liveIndexes":{}},"site":{"id":2919890,"direct_link":"https://901728.cargo.site","display_url":"901728.cargo.site","favicon_url":"https://static.cargo.site/favicon/c3-favicon.ico","site_url":"901728","domain":null,"domain_active":false,"domain_pending":false,"website_title":"Template K384 copy ","has_site_description":true,"site_description":"cargo.site","is_template":false,"access_level":"private"},"pages":{"byId":{}},"sets":{"byId":{}},"media":{"data":[]},"css":{},"siteDesign":{"images":{},"quick_view":{},"site":{"enableColorFilter":false,"enableHomeLinkActiveStates":false},"cart":{"theme":"light"},"contact_form":{"theme":"light"}},"frontendState":{"hasSiteModel":true,"hasScaffolding":true,"hasSiteDesign":true,"hasSiteCSS":true,"hasShopModel":false,"hasSitePackage":true,"quickView":{"mode":"default","inited":false,"autoScrolling":false,"elementArray":false,"activeIndex":0,"startingIndex":0},"contactForm":{"transition":false,"inited":false},"adminMode":false,"inAdminFrame":false,"renderedPages":[],"networkErrors":[],"pageNotFound":false,"fontsLoaded":[],"activeHashPurl":"","hostname":"901728.cargo.site"},"commerce":{"products":{},"cart":{},"shop":{}}}</script>
-			<meta name="robots" content="noindex">
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
 
-		<link rel="stylesheet" type="text/css" href="https://build.cargo.site/frontend/3c3291/css/front-end/cargo-static.css">
-		<link rel="stylesheet" type="text/css" href="https://build.cargo.site/frontend/3c3291/index.css">
-		<script>!function(){function e(e,o,t){!1===e.prototype.hasOwnProperty(name)&&(e.prototype[o]=t)}e(Node,"saveable",!1),e(Node,"setSaveable",function(e){return this.saveable=e,this}),e(Node,"isSaveable",function(){return this.saveable}),Node.prototype.persistCloneNode=function(){var s=function(e,o,t){for(var i=0;i<e.childNodes.length;i++)t(e.childNodes[i],o.childNodes[i]),0<e.childNodes[i].childNodes.length&&s(e.childNodes[i],o.childNodes[i],t)},e=Node.prototype.cloneNode.apply(this,arguments);return this.isSaveable&&!0===this.isSaveable()&&e.setSaveable(!0),0<this.childNodes.length&&s(this,e,function(e,o){e.isSaveable&&!0===e.isSaveable()&&o.setSaveable(!0)}),e},this.core={markAsEditable:function(e){}}}(window.CargoEditor=window.CargoEditor||{});</script>
-	
-			<link rel="icon" href="https://static.cargo.site/favicon/c3-favicon.ico" sizes="any">
-			
-			
-			
-			</head>
-	<body style="opacity: 0;">
-		<script src="https://build.cargo.site/frontend/3c3291/index.js" async type="module"></script>
-	</body>
+main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
 
-</html>
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
