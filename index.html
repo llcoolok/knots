@@ -1,44 +1,117 @@
 <!DOCTYPE html>
- 
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Laura Lindsey – Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #fff;
+      color: #000;
+    }
 
-    <link rel="stylesheet" href="main.css">
+    header {
+      text-align: center;
+      padding: 30px 20px 0;
+    }
 
-    <head><title>laura lindsey</title> 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    
+    header h1 {
+      font-size: 24px;
+      font-weight: normal;
+    }
 
-        <p><em> laura lindsey herridge </em></p>
-  
-    <p></p><a href="/CV.html" target="_blank" style="text-decoration:none;color:black;"> cv </a>
-      <p align=right><em> herridgellaura@gmail.com </em></p>
+    header a {
+      color: black;
+      text-decoration: none;
+      margin: 0 10px;
+    }
 
-   </a></p>
-<style></style>
-    
-    </head>
+    .masonry {
+      column-count: 3;
+      column-gap: 40px;
+      padding: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .item {
+      break-inside: avoid;
+      margin-bottom: 40px;
+    }
+
+    .item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .item p {
+      text-align: center;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 14px;
+      padding: 40px 20px;
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      .masonry {
+        column-count: 1;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
 
 <body>
-<align center>
-    <img src='JOE01571.jpg'>
-    <img src='JOE01515.jpg'>
-    <img src= 'JOE01618.jpg'>
- <p class=center>candle stand, 2022</a></p>
-    <br></br>
- <br></br>
- <br></br>
- <br></br>
-    <img src='holdingonto.jpg'>
-    <img src='crabtrap_edit_portrait.jpg'>
-    <img src='ma62.jpg'>
-   <p class=center>holding onto <em>(letting go of)</em> something, 2021&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;king crab, 2023&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wandering vine, sample, 2022</a></p>
- <br></br>
- <br></br>
- <br></br>
- <br></br>
-    <img src='wheel_edit_inmotion.jpg'>
+  <header>
+    <h1><em>laura lindsey herridge</em></h1>
+    <div>
+      <a href="/CV.html" target="_blank">cv</a> |
+      <a href="mailto:herridgellaura@gmail.com">herridgellaura@gmail.com</a>
+    </div>
+  </header>
 
+  <div class="masonry">
+    <div class="item">
+      <img src="JOE01571.jpg" alt="Candle Stand">
+      <p>candle stand, 2022</p>
+    </div>
+
+    <div class="item">
+      <img src="holdingonto.jpg" alt="Holding Onto">
+      <p>holding onto <em>(letting go of)</em> something, 2021</p>
+    </div>
+
+    <div class="item">
+      <img src="crabtrap_edit_portrait.jpg" alt="King Crab">
+      <p>king crab, 2023</p>
+    </div>
+
+    <div class="item">
+      <img src="ma62.jpg" alt="Wandering Vine">
+      <p>wandering vine, sample, 2022</p>
+    </div>
+
+    <div class="item">
+      <img src="wheel_edit_inmotion.jpg" alt="Wheel in Motion">
+      <p>wheel in motion, 2022</p>
+    </div>
+
+    <!-- Add more .item blocks here as needed -->
+  </div>
+
+  <footer>
+    ☆━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━☆
+  </footer>
+</body>
+</html>
     
    
  
