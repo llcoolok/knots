@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>laura lindsey</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            overflow-x: hidden;
+            color: #333;
+        }
+
+        header {
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95); /* Header background color */
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-title {
+            font-size: 24px;
+            font-weight: 400;
+            text-decoration: none;
+            color: #333;
+            font-style: italic;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            transition: color 0.3s;
+            font-style: italic;
+        }
+
+        nav ul li a:hover {
+            color: #999;
+        }
+
+        nav ul li a.active {
+            text-decoration: underline;
+        }
+
+        .work-container {
+            padding: 100px 40px 50px;
+            width: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .work-item {
+            display: flex;
+            margin-bottom: 100px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .work-image {
+            flex: 1;
+            padding-right: 40px;
+        }
+
+        .work-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .work-details {
+            flex: 1;
+            padding-left: 40px;
+        }
+
+        .work-title {
+            font-size: 24px;
+            font-weight: normal;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .work-year {
+            font-size: 16px;
+            margin-bottom: 25px;
+            font-style: italic;
+            color: #666;
+        }
+
+        .work-description {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .work-materials {
+            font-size: 14px;
+            font-style: italic;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .work-dimensions {
+            font-size: 14px;
+            color: #666;
+        }
+
+        footer {
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #999;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .work-item {
+                flex-direction: column;
+            }
+
+            .work-image {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+
+            .work-details {
+                padding-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="site-title">laura lindsey</a>
+        <nav>
+            <ul>
+                <li><a href="work.html" class="active">WORK</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li>herridgellaura@gmail.com</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="work-container">
+        <div class="work-item">
+            <div class="work-image">
+                <img src="JOE01618" alt="candlestand">
+            </div>
+            <div class="work-details">
+                <h2 class="work-title">Candlestand</h2>
+                <p class="work-year">2022</p>
+                <p class="work-description">In candlestand, I forgo hardware in favor of integrated threads and traditional joinery, creating a structure that is both adaptable and easily disassembled. This approach allows the piece to respond to its user, embracing transformation as a core function.</p>
+                <p class="work-description">Candlestand draws on references to 17th- and 18th-century tables designed to illuminate their own surfaces, reinterpreting these historical forms through a contemporary lens. </p>
+                <p class="work-materials">Charcoal and graphite on paper</p>
+                <p class="work-dimensions">60 × 80 cm</p>
+            </div>
+        </div>
+
+        <div class="work-item">
+            <div class="work-image">
+                <img src="/api/placeholder/800/600" alt="Artwork 2">
+            </div>
+            <div class="work-details">
+                <h2 class="work-title">Coastal Dwelling</h2>
+                <p class="work-year">2023</p>
+                <p class="work-description">This work examines the intersection of human-made structures and natural environments. The black house, standing stoically against the coastal landscape, represents the human desire to both embrace and control nature.</p>
+                <p class="work-description">The stark contrast between the geometric forms of architecture and the organic shapes of the surrounding environment creates a dialogue about permanence and impermanence.</p>
+                <p class="work-materials">Silver gelatin print</p>
+                <p class="work-dimensions">40 × 40 cm</p>
+            </div>
+        </div>
+
+        <div class="work-item">
+            <div class="work-image">
+                <img src="/api/placeholder/800/1000" alt="Artwork 3">
+            </div>
+            <div class="work-details">
+                <h2 class="work-title">Natural Forms</h2>
+                <p class="work-year">2022</p>
+                <p class="work-description">This collection of found objects explores the sculptural qualities inherent in natural forms. Each object—selected for its unique shape, texture, and history—offers a meditation on the artistic processes of nature itself.</p>
+                <p class="work-description">By removing these objects from their original context and presenting them as art, the work questions the boundaries between natural artifact and artistic creation.</p>
+                <p class="work-materials">Mixed media installation with found objects</p>
+                <p class="work-dimensions">Dimensions variable</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 HOW MANY KNOTS MAKE A. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all work items
+            const workItems = document.querySelectorAll('.work-item');
+            
+            // Set up Intersection Observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // When element is visible, add animation
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, 100);
+                        // Stop observing once animation is applied
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                root: null, // Use viewport as root
+                threshold: 0.1, // Trigger when 10% of the element is visible
+                rootMargin: '0px' // No margin
+            });
+            
+            // Start observing each work item
+            workItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>
