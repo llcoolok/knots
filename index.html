@@ -1,124 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Laura Lindsey – Portfolio</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background-color: #fff;
-      color: #000;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Column Scrolling Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
 
-    header {
-      text-align: center;
-      padding: 30px 20px 0;
-    }
+        body {
+            background-color: #f3f3f3;
+            overflow-x: hidden;
+            color: #333;
+        }
 
-    header h1 {
-      font-size: 24px;
-      font-weight: normal;
-    }
+        header {
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            background-color: rgba(243, 243, 243, 0.95);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    header a {
-      color: black;
-      text-decoration: none;
-      margin: 0 10px;
-    }
+        .site-title {
+            font-size: 24px;
+            font-weight: 400;
+            text-decoration: none;
+            color: #333;
+            font-style: italic;
+        }
 
-    .masonry {
-      column-count: 3;
-      column-gap: 40px;
-      padding: 50px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
 
-    .item {
-      break-inside: avoid;
-      margin-bottom: 40px;
-    }
+        nav ul li {
+            margin-left: 20px;
+        }
 
-    .item img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            transition: color 0.3s;
+            font-style: italic;
+        }
 
-    .item p {
-      text-align: center;
-      margin-top: 8px;
-      font-size: 14px;
-    }
+        nav ul li a:hover {
+            color: #999;
+        }
 
-    footer {
-      text-align: center;
-      font-size: 14px;
-      padding: 40px 20px;
-      color: #555;
-    }
+        .columns-container {
+            display: flex;
+            padding: 100px 20px 50px;
+            width: 100%;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
 
-    @media (max-width: 768px) {
-      .masonry {
-        column-count: 1;
-        padding: 20px;
-      }
-    }
-  </style>
+        .column {
+            padding: 0 15px;
+            max-height: 100vh;
+            overflow-y: auto;
+            scrollbar-width: none; /* For Firefox */
+        }
+        
+        #column1, #column3 {
+            flex: 1;
+        }
+        
+        #column2 {
+            flex: 1.5; /* Make center column 50% wider */
+        }
+
+        .column::-webkit-scrollbar {
+            display: none; /* For Chrome, Safari and Opera */
+        }
+
+        .column-content {
+            padding-bottom: 30vh; /* Add space at the bottom for scrolling effect */
+        }
+
+        .content-block {
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .image-block img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .text-block h2 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .text-block p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .columns-container {
+                flex-direction: column;
+                padding-top: 80px;
+            }
+
+            .column {
+                max-height: none;
+                margin-bottom: 40px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <header>
-    <h1><em>laura lindsey herridge</em></h1>
-    <div>
-      <a href="/CV.html" target="_blank">cv</a> |
-      <a href="mailto:herridgellaura@gmail.com">herridgellaura@gmail.com</a>
+    <header>
+        <a href="#" class="site-title">HOW MANY KNOTS MAKE A</a>
+        <nav>
+            <ul>
+                <li><a href="#">WORK</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="columns-container">
+        <div class="column" id="column1">
+            <div class="column-content">
+                <div class="content-block image-block">
+                    <img src="/api/placeholder/600/400" alt="Project 1">
+                    <p>Project 1 — Creative Direction, 2025</p>
+                </div>
+                <div class="content-block text-block">
+                    <h2>About The Project</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
+                    <p>Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere.</p>
+                </div>
+                <div class="content-block image-block">
+                    <img src="/api/placeholder/600/800" alt="Project 4">
+                    <p>Project 4 — Photography, 2025</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="column" id="column2">
+            <div class="column-content">
+                <div class="content-block text-block">
+                    <h2>Design Philosophy</h2>
+                    <p>Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                </div>
+                <div class="content-block image-block">
+                    <img src="/api/placeholder/600/600" alt="Project 2">
+                    <p>Project 2 — Editorial Design, 2025</p>
+                </div>
+                <div class="content-block text-block">
+                    <h2>Client Work</h2>
+                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+                    <p>Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="column" id="column3">
+            <div class="column-content">
+                <div class="content-block image-block">
+                    <img src="/api/placeholder/600/500" alt="Project 3">
+                    <p>Project 3 — Brand Identity, 2025</p>
+                </div>
+                <div class="content-block text-block">
+                    <h2>Approach</h2>
+                    <p>Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</p>
+                    <p>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc. Sed at magna non nunc blandit eleifend.</p>
+                </div>
+                <div class="content-block image-block">
+                    <img src="/api/placeholder/600/700" alt="Project 5">
+                    <p>Project 5 — Typography, 2025</p>
+                </div>
+            </div>
+        </div>
     </div>
-  </header>
 
-  <div class="masonry">
-    <div class="item">
-      <img src="JOE01571.jpg" alt="Candle Stand">
-      <p>candle stand, 2022</p>
-    </div>
+    <footer>
+        <p>© 2025 Portfolio. All rights reserved.</p>
+    </footer>
 
-  <div class="item">
-    <div class="item">
-      <img src=JOE01515.JPG">
-      <p>cont'd</p>
-    </div>
-
-    <div class="item">
-      <img src="holdingonto.jpg" alt="Holding Onto">
-      <p>holding onto <em>(letting go of)</em> something, 2021</p>
-    </div>
-
-    <div class="item">
-      <img src="crabtrap_edit_portrait.jpg" alt="King Crab">
-      <p>king crab, 2023</p>
-    </div>
-
-    <div class="item">
-      <img src="ma62.jpg" alt="Wandering Vine">
-      <p>wandering vine, sample, 2022</p>
-    </div>
-
-    <div class="item">
-      <img src="wheel_edit_inmotion.jpg" alt="Wheel in Motion">
-      <p>wheel in motion, 2022</p>
-    </div>
-
-    <!-- Add more .item blocks here as needed -->
-  </div>
-
-  <footer>
-    ☆━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━☆
-  </footer>
+    <script>
+        // Intersection Observer to handle scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all content blocks
+            const contentBlocks = document.querySelectorAll('.content-block');
+            
+            // Set up Intersection Observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // When element is visible, add animation
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, 100);
+                        // Stop observing once animation is applied
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                root: null, // Use viewport as root
+                threshold: 0.1, // Trigger when 10% of the element is visible
+                rootMargin: '0px' // No margin
+            });
+            
+            // Start observing each content block
+            contentBlocks.forEach(block => {
+                observer.observe(block);
+            });
+            
+            // Function to handle independent scrolling for each column
+            function handleColumnScroll() {
+                // This is already handled by CSS overflow-y: auto for each column
+                // Additional scroll effects can be added here if needed
+            }
+            
+            // Initialize column scroll handling
+            handleColumnScroll();
+            
+            // Add custom cursor behavior (optional)
+            document.addEventListener('mousemove', function(e) {
+                // You could create a custom cursor effect here
+            });
+        });
+    </script>
 </body>
 </html>
-    
    
  
 
