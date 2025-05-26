@@ -1,1 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lauralindsey</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        body {
+            background-color: ##ffffff;
+            overflow-x: hidden;
+            color: #333;
+        }
+
+        header {
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-title {
+            font-size: 24px;
+            font-weight: 400;
+            text-decoration: none;
+            color: #333;
+            font-style: italic;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            transition: color 0.3s;
+            font-style: italic;
+        }
+
+        nav ul li a:hover {
+            color: #999;
+        }
+
+        .columns-container {
+            display: flex;
+            padding: 100px 20px 50px;
+            width: 100%;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        .column {
+            padding: 0 15px;
+            max-height: 100vh;
+            overflow-y: auto;
+            scrollbar-width: none; /* For Firefox */
+        }
+        
+        #column1, #column3 {
+            flex: 1;
+        }
+        
+        #column2 {
+            flex: 1.5; /* Make center column 0% wider */
+        }
+
+        .column::-webkit-scrollbar {
+            display: none; /* For Chrome, Safari and Opera */
+        }
+
+        .column-content {
+            padding-bottom: 30vh; /* Add space at the bottom for scrolling effect */
+        }
+
+        .content-block {
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .image-block img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .text-block h2 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .text-block p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .columns-container {
+                flex-direction: column;
+                padding-top: 80px;
+            }
+
+            .column {
+                max-height: none;
+                margin-bottom: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="site-title">laura lindsey</a>
+        <nav>
+            <ul>
+                <li><a href="work.html">WORK</a></li>
+                <li><a href="photo.html">WORK</a></li>
+                <li><a href="/CV.html">CV</a></li>
+                <li>herridgellaura@gmail.com</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="columns-container">
+        <div class="column" id="column1">
+            <div class="column-content">
+                <div class="content-block image-block">
+                    <img src="" alt="">
+                    <p></p>
+                </div>
+                <div class="content-block text-block">
+                    <h2></h2>
+                    <p></p>
+                </div>
+                <div class="content-block image-block">
+                    <img src="" alt="">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="column" id="column2">
+            <div class="column-content">
+                <div class="content-block text-block">
+                    <h2></h2>
+                    <p></p>
+                </div>
+                <div class="content-block image-block">
+                    <img src="JOE01571.jpg" alt="candlestand">
+                    <p></p>
+                </div>
+                
+                <div class="content-block image-block">
+                    <img src="JOE01618.jpg" alt="candlestand">
+                    <p></p>
+                </div>
+                 <div class="content-block image-block">
+                    <img src="crabtrap_edit_portrait.jpg" alt="crab trap">
+                    <p></p>
+                 </div>
+
+                 <div class="content-block image-block">
+                    <img src="holdingonto.jpg" alt="weaving">
+                    <p></p>
+                 </div>
+                 <div class="content-block image-block">
+                    <img src="woven_close.jpg" alt="weaving">
+                    <p></p>
+                </div>
+                <div class="content-block text-block">
+                    
+                    <h2></h2>
+                   <p></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="column" id="column3">
+           
+                <div class="content-block text-block">
+                    <h2></h2>
+                    </p></p>
+                </div>
+                <div class="content-block image-block">
+                    <img src="JOE01515.jpg" alt="candlestand">
+                    <p></p>
+                </div> 
+                <div class="content-block image-block">
+                    <img src="wheel_edit_inmotion.jpg" alt="wheel">
+                    <p></p>
+                    
+                </div>
+             <div class="content-block image-block">
+                    <img src="ma62.jpg" alt="">
+                    <p></p>
+                    
+                </div>
+                
+                
+    
+
+    <footer>
+        <p>© 2025 Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Intersection Observer to handle scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all content blocks
+            const contentBlocks = document.querySelectorAll('.content-block');
+            
+            // Set up Intersection Observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // When element is visible, add animation
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, 100);
+                        // Stop observing once animation is applied
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                root: null, // Use viewport as root
+                threshold: 0.1, // Trigger when 10% of the element is visible
+                rootMargin: '0px' // No margin
+            });
+            
+            // Start observing each content block
+            contentBlocks.forEach(block => {
+                observer.observe(block);
+            });
+            
+            // Function to handle independent scrolling for each column
+            function handleColumnScroll() {
+                // This is already handled by CSS overflow-y: auto for each column
+                // Additional scroll effects can be added here if needed
+            }
+            
+            // Initialize column scroll handling
+            handleColumnScroll();
+            
+            // Add custom cursor behavior (optional)
+            document.addEventListener('mousemove', function(e) {
+                // You could create a custom cursor effect here
+            });
+        });
+    </script>
+</body>
+</html>
+   
+ 
+
+
 
