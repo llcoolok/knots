@@ -65,28 +65,31 @@
             display: block;
         }
 
-        .routes-container {
-    width: 90%;             
+       .routes-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     padding-top: 120px;
     padding-left: 40px;
     padding-right: 40px;
     padding-bottom: 60px;
-            margin: 0 auto
-            max-width: 1200px
-            
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
         
 
-        .route-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 45px 0;
-            border-bottom: 1px solid #eee;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
+       .route-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 900px;
+    padding: 45px 0;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
         .route-item:hover {
             background-color: #fafafa;
             padding-left: 10px;
