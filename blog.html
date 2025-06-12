@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>laura lindsey - blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            overflow-x: hidden;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        header {
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .site-title {
+            font-size: 24px;
+            font-weight: 400;
+            text-decoration: none;
+            color: #333;
+            font-style: italic;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            transition: color 0.3s;
+            font-style: italic;
+        }
+
+        nav ul li a:hover {
+            color: #999;
+        }
+
+        /* Main Page Styles */
+        .main-page {
+            display: block;
+        }
+
+        .columns-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2px;
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+
+        .column-item {
+            background: #ffffff;
+            border: 1px solid #eee;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            min-height: 300px;
+            overflow: hidden;
+        }
+
+        .column-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-color: #ddd;
+        }
+
+        .column-image {
+            width: 40%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            order: 2;
+        }
+
+        .column-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .column-item:hover .column-image img {
+            transform: scale(1.05);
+        }
+
+        .column-content {
+            width: 60%;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+            order: 1;
+        }
+
+        .column-item h2 {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .column-item:hover h2 {
+            transform: translateX(-10px);
+        }
+
+        .column-item p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Detail Page Styles */
+        .detail-page {
+            display: none;
+            padding-top: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .detail-page.active {
+            display: block;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            right: 150px;
+            background: none;
+            border: none;
+            font-size: 16px;
+            font-style: italic;
+            color: #333;
+            cursor: pointer;
+            transition: color 0.3s;
+            font-family: 'Times New Roman', Times, serif;
+            z-index: 101;
+        }
+
+        .back-button:hover {
+            color: #999;
+        }
+
+        .detail-header {
+            margin-bottom: 60px;
+        }
+
+        .detail-header h1 {
+            font-size: 48px;
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .detail-header .subtitle {
+            font-size: 18px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .detail-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+        }
+
+        .content-block {
+            margin-bottom: 40px;
+        }
+
+        .text-block {
+            max-width: 700px;
+        }
+
+        .text-block h3 {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #333;
+        }
+
+        .text-block p {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .image-block {
+            width: 100%;
+        }
+
+        .image-block img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .image-caption {
+            font-size: 14px;
+            font-style: italic;
+            color: #666;
+            text-align: center;
+        }
+
+        .map-block {
+            width: 100%;
+            height: 400px;
+            background: #f5f5f5;
+            border: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .map-placeholder {
+            font-size: 16px;
+            color: #999;
+            font-style: italic;
+        }
+
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin: 40px 0;
+        }
+
+        @media (max-width: 768px) {
+            .columns-grid {
+                grid-template-columns: 1fr;
+                gap: 1px;
+            }
+
+            .column-item {
+                min-height: 250px;
+                flex-direction: column;
+            }
+
+            .column-image {
+                width: 100%;
+                height: 150px;
+            }
+
+            .column-content {
+                width: 100%;
+                padding: 30px 20px;
+            }
+
+            .column-item h2 {
+                font-size: 24px;
+            }
+
+            .detail-header h1 {
+                font-size: 36px;
+            }
+
+            .two-column-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .back-button {
+                right: 20px;
+            }
+        }
+
+        /* Animation for page transitions */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="site-title">laura lindsey</a>
+        <nav>
+            <ul>
+                <li><a href="work.html">WORK</a></li>
+                <li><a href="blog.html">BLOG</a></li>
+                <li><a href="CV.html">CV</a></li>
+                <li>herridgellaura@gmail.com</li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Page -->
+    <div id="main-page" class="main-page">
+        <div class="columns-grid">
+            <div class="column-item" onclick="showDetailPage('post1')">
+                <div class="column-image">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=400&fit=crop&crop=center" alt="Weaving loom">
+                </div>
+                <div class="column-content">
+                    <h2>Material Conversations</h2>
+                    <p>Reflections on the dialogue between maker and medium in contemporary craft practice.</p>
+                </div>
+            </div>
+            
+            <div class="column-item" onclick="showDetailPage('post2')">
+                <div class="column-image">
+                    <img src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=500&h=400&fit=crop&crop=center" alt="Workshop tools">
+                </div>
+                <div class="column-content">
+                    <h2>Studio Notes</h2>
+                    <p>Daily observations from the workshop, documenting process and discovery.</p>
+                </div>
+            </div>
+            
+            <div class="column-item" onclick="showDetailPage('post3')">
+                <div class="column-image">
+                    <img src="https://images.unsplash.com/photo-1565464027194-7957a2295fb7?w=500&h=400&fit=crop&crop=center" alt="Traditional pottery">
+                </div>
+                <div class="column-content">
+                    <h2>Craft & Context</h2>
+                    <p>Examining how traditional techniques find new meaning in contemporary settings.</p>
+                </div>
+            </div>
+            
+            <div class="column-item" onclick="showDetailPage('post4')">
+                <div class="column-image">
+                    <img src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=500&h=400&fit=crop&crop=center" alt="Clay sculpture">
+                </div>
+                <div class="column-content">
+                    <h2>Making & Unmaking</h2>
+                    <p>The cyclical nature of creation and destruction in material practice.</p>
+                </div>
+            </div>
+            
+            <div class="column-item" onclick="showDetailPage('post5')">
+                <div class="column-image">
+                    <img src="https://images.unsplash.com/photo-1617469767053-d3b523a0b982?w=500&h=400&fit=crop&crop=center" alt="Field notes">
+                </div>
+                <div class="column-content">
+                    <h2>Field Research</h2>
+                    <p>Documenting encounters with makers, materials, and methods in various locations.</p>
+                </div>
+            </div>
+            
+            <div class="column-item" onclick="showDetailPage('post6')">
+                <div class="column-image">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=400&fit=crop&crop=center" alt="Natural materials">
+                </div>
+                <div class="column-content">
+                    <h2>Seasonal Rhythms</h2>
+                    <p>How the changing seasons influence material choice and making processes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detail Pages -->
+    <!-- Post 1 Detail -->
+    <div id="post1-page" class="detail-page">
+        <button class="back-button" onclick="showMainPage()">← back</button>
+        
+        <div class="detail-header fade-in">
+            <h1>Material Conversations</h1>
+            <p class="subtitle">Reflections on the dialogue between maker and medium - March 15, 2025</p>
+        </div>
+        
+        <div class="detail-content">
+            <div class="content-block fade-in">
+                <div class="text-block">
+                    <p>There's a moment in every making process where the material begins to speak back. It's subtle at first—a resistance in the thread, an unexpected grain in the wood, a way the clay wants to move that wasn't planned.</p>
+                    <p>This morning, working on a new weaving piece, I encountered one of these moments. The linen I've been using, which had seemed so compliant in previous sessions, suddenly felt different under my fingers. More assertive, somehow. More itself.</p>
+                </div>
+            </div>
+            
+            <div class="content-block fade-in">
+                <div class="image-block">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=500&fit=crop&crop=center" alt="Work in progress">
+                    <p class="image-caption">Morning light on the loom, March 2025</p>
+                </div>
+            </div>
+            
+            <div class="content-block fade-in">
+                <div class="text-block">
+                    <h3>Listening to Materials</h3>
+                    <p>Richard Sennett writes about the craftsperson's ability to develop what he calls "intelligent hand"—a form of knowledge that emerges through sustained physical engagement with materials. But I think there's another dimension to this relationship that often goes unmentioned: the material's own agency in the making process.</p>
+                    <p>When I speak of materials "speaking back," I don't mean this metaphorically. There's a real dialogue happening, a negotiation between my intentions and the material's inherent properties and preferences.</p>
+                </div>
+            </div>
+            
+            <div class="content-block fade-in">
+                <div class="map-block">
+                    <p class="map-placeholder">[Embedded Map - Fiber Sources & Mills Visited]</p>
+                </div>
+            </div>
+            
+            <div class="content-block fade-in">
+                <div class="two-column-layout">
+                    <div class="image-block">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&crop=center" alt="Detail of weaving">
+                        <p class="image-caption">Detail showing where the conversation began</p>
+                    </div>
+                    <div class="text-block">
+                        <h3>The Ethics of Making</h3>
+                        <p>This raises questions about the ethics of making. If materials have their own preferences and tendencies, what does it mean to force them into forms they resist? How do we balance creative vision with material integrity?</p>
+                        <p>I'm beginning to think that the best work emerges not from imposing will upon matter, but from finding where human intention and material possibility align.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post 2 Detail -->
+    <div id="post2-page" class="detail-page">
+        <button class="back-button" onclick="showMainPage()">← back</button>
+        
+        <div class="detail-header fade-in">
+            <h1>Studio Notes</h1>
+            <p class="subtitle">Daily observations from the workshop - March 8, 2025</p>
+        </div>
+        
+        <div class="detail-content">
+            <div class="content-block fade-in">
+                <div class="text-block">
+                    <p>Tuesday morning, 8:47 AM. The studio is cold—forgot to turn on the heat yesterday evening. My hands move slowly as I prepare the day's work, waiting for warmth to return to my fingers.</p>
+                    <p>There's something about the temperature that affects not just comfort, but the quality of attention I can bring to the work. Cold hands are clumsy hands, but they're also more sensitive to texture, more aware of the materials they encounter.</p>
+                </div>
+            </div>
+            
+            <div class="content-block fade-in">
+                <div class="image-block">
+                    <img src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=800&h=500&fit=crop&crop=center" alt="Morning studio setup">
+                    <p class="image-caption">Early morning light in the workshop</p>
+                </div>
+            </div>
+            
+            <div class="content-block fade-in">
+                <div class="text-block">
+                    <h3>Rhythms and Routines</h3>
+                    <p>Every maker develops their rhythms. Mine tend to follow the light—starting with detailed work when the morning sun streams through the east window, moving to rougher preparation tasks as the day progresses and shadows lengthen.</p>
+                </div>
+            </div>
+            
+            <div class="content-block fade-in">
+                <div class="two-column-layout">
+                    <div class="text-block">
+                        <p>Today I'm working on preparations for the new candlestand series. The wood needs to be cut to rough dimensions before I can begin thinking about joinery and final shaping.</p>
+                        <p>But first, coffee. Always coffee.</p>
+                    </div>
+                    <div class="image-block">
+                        <img src="https://images.unsplash.com/photo-1604709177225-055f99402ea3?w=400&h=300&fit=crop&crop=center" alt="Work surface">
+                        <p class="image-caption">Tools and materials ready for the day</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional blog post pages -->
+    <div id="post3-page" class="detail-page">
+        <button class="back-button" onclick="showMainPage()">← back</button>
+        <div class="detail-header fade-in">
+            <h1>Craft & Context</h1>
+            <p class="subtitle">Examining how traditional techniques find new meaning in contemporary settings - February 28, 2025</p>
+        </div>
+        <div class="detail-content">
+            <div class="content-block fade-in">
+                <div class="text-block">
+                    <p>The question that keeps arising in conversations about contemporary craft: does context change meaning? When a traditional technique is employed in a gallery rather than a home, in an art school rather than a guild, does something fundamental shift?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="post4-page" class="detail-page">
+        <button class="back-button" onclick="showMainPage()">← back</button>
+        <div class="detail-header fade-in">
+            <h1>Making & Unmaking</h1>
+            <p class="subtitle">The cyclical nature of creation and destruction in material practice - February 20, 2025</p>
+        </div>
+    </div>
+
+    <div id="post5-page" class="detail-page">
+        <button class="back-button" onclick="showMainPage()">← back</button>
+        <div class="detail-header fade-in">
+            <h1>Field Research</h1>
+            <p class="subtitle">Documenting encounters with makers, materials, methods - February 12, 2025</p>
+        </div>
+    </div>
+
+    <div id="post6-page" class="detail-page">
+        <button class="back-button" onclick="showMainPage()">← back</button>
+        <div class="detail-header fade-in">
+            <h1>Seasonal Rhythms</h1>
+            <p class="subtitle">How the changing seasons influence material choice and making processes - February 5, 2025</p>
+        </div>
+    </div>
+
+    <script>
+        function showDetailPage(postId) {
+            // Hide main page
+            document.getElementById('main-page').style.display = 'none';
+            
+            // Hide all detail pages
+            const detailPages = document.querySelectorAll('.detail-page');
+            detailPages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected detail page
+            const targetPage = document.getElementById(postId + '-page');
+            if (targetPage) {
+                targetPage.classList.add('active');
+                
+                // Reset and trigger animations
+                const fadeElements = targetPage.querySelectorAll('.fade-in');
+                fadeElements.forEach((element, index) => {
+                    element.style.animation = 'none';
+                    element.style.opacity = '0';
+                    element.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        element.style.animation = `fadeInUp 0.6s ease ${index * 0.1}s forwards`;
+                    }, 50);
+                });
+            }
+        }
+
+        function showMainPage() {
+            // Hide all detail pages
+            const detailPages = document.querySelectorAll('.detail-page');
+            detailPages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show main page
+            document.getElementById('main-page').style.display = 'block';
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            showMainPage();
+        });
+    </script>
+</body>
+</html>
