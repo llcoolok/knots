@@ -16,7 +16,7 @@
             background-color: #ffffff;
             overflow-x: hidden;
             color: #333;
-            line-height: 1.4;
+            line-height: 1.6;
         }
 
         header {
@@ -65,77 +65,68 @@
             display: block;
         }
 
-        .columns-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2px;
-            padding-top: 80px;
-            min-height: 100vh;
+        .routes-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-top: 120px;
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-bottom: 60px;
         }
 
-        .column-item {
-            background: #ffffff;
-            border: 1px solid #eee;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .route-item {
             display: flex;
-            min-height: 300px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .route-item:hover {
+            background-color: #fafafa;
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-left: -10px;
+            margin-right: -10px;
+        }
+
+        .route-item:last-child {
+            border-bottom: none;
+        }
+
+        .route-content {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .route-title {
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 8px;
+            color: #333;
+            line-height: 1.3;
+        }
+
+        .route-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .route-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 4px;
             overflow: hidden;
+            flex-shrink: 0;
         }
 
-        .column-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            border-color: #ddd;
-        }
-
-        .column-image {
-            width: 40%;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-            order: 2;
-        }
-
-        .column-image img {
+        .route-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .column-item:hover .column-image img {
-            transform: scale(1.05);
-        }
-
-        .column-content {
-            width: 60%;
-            padding: 40px 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: left;
-            order: 1;
-        }
-
-        .column-item h2 {
-            font-size: 28px;
-            font-weight: 400;
-            margin-bottom: 20px;
-            font-style: italic;
-            color: #333;
-            transition: all 0.3s ease;
-        }
-
-        .column-item:hover h2 {
-            transform: translateX(-10px);
-        }
-
-        .column-item p {
-            font-size: 16px;
-            color: #666;
-            line-height: 1.6;
         }
 
         /* Detail Page Styles */
@@ -261,28 +252,27 @@
         }
 
         @media (max-width: 768px) {
-            .columns-grid {
-                grid-template-columns: 1fr;
-                gap: 1px;
+            .routes-container {
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 100px;
             }
 
-            .column-item {
-                min-height: 250px;
-                flex-direction: column;
+            .route-item {
+                padding: 15px 0;
             }
 
-            .column-image {
-                width: 100%;
-                height: 150px;
+            .route-title {
+                font-size: 16px;
             }
 
-            .column-content {
-                width: 100%;
-                padding: 30px 20px;
+            .route-description {
+                font-size: 13px;
             }
 
-            .column-item h2 {
-                font-size: 24px;
+            .route-image {
+                width: 50px;
+                height: 50px;
             }
 
             .detail-header h1 {
@@ -330,65 +320,68 @@
 
     <!-- Main Page -->
     <div id="main-page" class="main-page">
-        <div class="columns-grid">
-            <div class="column-item" onclick="showDetailPage('post1')">
-                <div class="column-image">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=400&fit=crop&crop=center" alt="Weaving loom">
+        <div class="routes-container">
+            
+            <div class="route-item" onclick="showDetailPage('post1')">
+                <div class="route-content">
+                    <div class="route-title">Material Conversations</div>
+                    <div class="route-description">Reflections on the dialogue between maker and medium in contemporary craft practice.</div>
                 </div>
-                <div class="column-content">
-                    <h2>Material Conversations</h2>
-                    <p>Reflections on the dialogue between maker and medium in contemporary craft practice.</p>
+                <div class="route-image">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=120&h=120&fit=crop&crop=center" alt="Weaving loom">
                 </div>
             </div>
             
-            <div class="column-item" onclick="showDetailPage('post2')">
-                <div class="column-image">
-                    <img src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=500&h=400&fit=crop&crop=center" alt="Workshop tools">
+            <div class="route-item" onclick="showDetailPage('post2')">
+                <div class="route-content">
+                    <div class="route-title">Studio Notes</div>
+                    <div class="route-description">Daily observations from the workshop, documenting process and discovery.</div>
                 </div>
-                <div class="column-content">
-                    <h2>Studio Notes</h2>
-                    <p>Daily observations from the workshop, documenting process and discovery.</p>
-                </div>
-            </div>
-            
-            <div class="column-item" onclick="showDetailPage('post3')">
-                <div class="column-image">
-                    <img src="https://images.unsplash.com/photo-1565464027194-7957a2295fb7?w=500&h=400&fit=crop&crop=center" alt="Traditional pottery">
-                </div>
-                <div class="column-content">
-                    <h2>Craft & Context</h2>
-                    <p>Examining how traditional techniques find new meaning in contemporary settings.</p>
+                <div class="route-image">
+                    <img src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=120&h=120&fit=crop&crop=center" alt="Workshop tools">
                 </div>
             </div>
             
-            <div class="column-item" onclick="showDetailPage('post4')">
-                <div class="column-image">
-                    <img src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=500&h=400&fit=crop&crop=center" alt="Clay sculpture">
+            <div class="route-item" onclick="showDetailPage('post3')">
+                <div class="route-content">
+                    <div class="route-title">Craft & Context</div>
+                    <div class="route-description">Examining how traditional techniques find new meaning in contemporary settings.</div>
                 </div>
-                <div class="column-content"> biking down the pacific coast, victoria BC to SF</h2>
-                    <p>september 2024</p>
-                </div>
-            </div>
-            
-            <div class="column-item" onclick="showDetailPage('post5')">
-                <div class="column-image">
-                    <img src="https://images.unsplash.com/photo-1617469767053-d3b523a0b982?w=500&h=400&fit=crop&crop=center" alt="Field notes">
-                </div>
-                <div class="column-content">
-                    <h2>big birthday ride, galiano island</h2>
-                    <p>april 2024</p>
+                <div class="route-image">
+                    <img src="https://images.unsplash.com/photo-1565464027194-7957a2295fb7?w=120&h=120&fit=crop&crop=center" alt="Traditional pottery">
                 </div>
             </div>
             
-            <div class="column-item" onclick="showDetailPage('post6')">
-                <div class="column-image">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=400&fit=crop&crop=center" alt="Natural materials">
+            <div class="route-item" onclick="showDetailPage('post4')">
+                <div class="route-content">
+                    <div class="route-title">Making & Unmaking</div>
+                    <div class="route-description">The cyclical nature of creation and destruction in material practice.</div>
                 </div>
-                <div class="column-content">
-                    <h2>Seasonal Rhythms</h2>
-                    <p>How the changing seasons influence material choice and making processes.</p>
+                <div class="route-image">
+                    <img src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=120&h=120&fit=crop&crop=center" alt="Clay sculpture">
                 </div>
             </div>
+            
+            <div class="route-item" onclick="showDetailPage('post5')">
+                <div class="route-content">
+                    <div class="route-title">Field Research</div>
+                    <div class="route-description">Documenting encounters with makers, materials, and methods in various locations.</div>
+                </div>
+                <div class="route-image">
+                    <img src="https://images.unsplash.com/photo-1617469767053-d3b523a0b982?w=120&h=120&fit=crop&crop=center" alt="Field notes">
+                </div>
+            </div>
+            
+            <div class="route-item" onclick="showDetailPage('post6')">
+                <div class="route-content">
+                    <div class="route-title">Seasonal Rhythms</div>
+                    <div class="route-description">How the changing seasons influence material choice and making processes.</div>
+                </div>
+                <div class="route-image">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&crop=center" alt="Natural materials">
+                </div>
+            </div>
+            
         </div>
     </div>
 
