@@ -3,579 +3,332 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>laura lindsey - blog</title>
+    <title>Routes</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Times New Roman', Times, serif;
         }
 
         body {
-            background-color: #ffffff;
-            overflow-x: hidden;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: #fafafa;
             color: #333;
             line-height: 1.6;
         }
 
-        header {
-            padding: 20px;
-            position: fixed;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(10px);
+        .header {
+            text-align: left;
+            padding: 60px 20px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .site-title {
-            font-size: 24px;
-            font-weight: 400;
-            text-decoration: none;
+        .header h1 {
+            font-size: 2rem;
+            font-weight: normal;
+            margin-bottom: 20px;
             color: #333;
+            letter-spacing: 0.5px;
+        }
+
+        .header p {
+            font-size: 1rem;
+            color: #666;
             font-style: italic;
+            max-width: 500px;
         }
 
-        nav ul {
-            display: flex;
-            list-style: none;
+        .routes-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
         }
 
-        nav ul li {
-            margin-left: 20px;
+        .route-card {
+            background: white;
+            margin-bottom: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+            position: relative;
         }
 
-        nav ul li a {
-            text-decoration: none;
-            color: #333;
-            font-size: 16px;
-            transition: color 0.3s;
-            font-style: italic;
-        }
-
-        nav ul li a:hover {
-            color: #999;
-        }
-
-        /* Main Page Styles */
-        .main-page {
-            display: block;
-        }
-
-       .routes-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-top: 120px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-bottom: 60px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-        
-
-       .route-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 900px;
-    padding: 45px 0;
-    border-bottom: 1px solid #eee;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-        .route-item:hover {
-            background-color: #fafafa;
+        .route-card:hover {
+            background: #f8f8f8;
             padding-left: 10px;
-            padding-right: 10px;
-            margin-left: -10px;
-            margin-right: -10px;
         }
 
-        .route-item:last-child {
+        .route-card:last-child {
             border-bottom: none;
         }
 
         .route-content {
+            display: flex;
+            align-items: center;
+            padding: 30px 0;
+            position: relative;
+        }
+
+        .route-info {
             flex: 1;
-            margin-right: 20px;
+            margin-right: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .route-year {
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 8px;
+            font-weight: normal;
         }
 
         .route-title {
-            font-size: 26px;
-            font-weight: 400;
-            margin-bottom: 8px;
+            font-size: 1.1rem;
+            font-weight: normal;
             color: #333;
-            line-height: 1.3;
+            margin-bottom: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .route-card:hover .route-title {
+            color: #000;
+        }
+
+        .route-meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+            font-style: italic;
         }
 
         .route-description {
-            font-size: 18px;
-            color: #666;
-            line-height: 1.4;
+            color: #555;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            max-width: 480px;
         }
 
         .route-image {
-            width: 180px;
-            height: 180px;
-            border-radius: 2px;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
-
-        .route-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Detail Page Styles */
-        .detail-page {
-            display: none;
-            padding-top: 80px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-
-        .detail-page.active {
-            display: block;
-        }
-
-        .back-button {
-            position: fixed;
-            top: 20px;
-            right: 150px;
-            background: none;
-            border: none;
-            font-size: 16px;
-            font-style: italic;
-            color: #333;
-            cursor: pointer;
-            transition: color 0.3s;
-            font-family: 'Times New Roman', Times, serif;
-            z-index: 101;
-        }
-
-        .back-button:hover {
-            color: #999;
-        }
-
-        .detail-header {
-            margin-bottom: 60px;
-        }
-
-        .detail-header h1 {
-            font-size: 48px;
-            font-weight: 400;
-            font-style: italic;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .detail-header .subtitle {
-            font-size: 18px;
-            color: #666;
-            font-style: italic;
-        }
-
-        .detail-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 60px;
-        }
-
-        .content-block {
-            margin-bottom: 40px;
-        }
-
-        .text-block {
-            max-width: 700px;
-        }
-
-        .text-block h3 {
-            font-size: 24px;
-            font-weight: 400;
-            margin-bottom: 20px;
-            font-style: italic;
-            color: #333;
-        }
-
-        .text-block p {
-            font-size: 16px;
-            line-height: 1.7;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .image-block {
-            width: 100%;
-        }
-
-        .image-block img {
-            width: 100%;
-            height: auto;
-            display: block;
-            margin-bottom: 15px;
-        }
-
-        .image-caption {
-            font-size: 14px;
-            font-style: italic;
-            color: #666;
-            text-align: center;
-        }
-
-        .map-block {
-            width: 100%;
-            height: 400px;
-            background: #f5f5f5;
-            border: 1px solid #eee;
+            width: 80px;
+            height: 80px;
+            background: #f0f0f0;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 40px 0;
+            color: #999;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
         }
 
-        .map-placeholder {
-            font-size: 16px;
-            color: #999;
+        .route-card:hover .route-image {
+            background: #e8e8e8;
+            color: #666;
+        }
+
+        .materials {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 12px;
             font-style: italic;
         }
 
-        .two-column-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            margin: 40px 0;
-        }
-
         @media (max-width: 768px) {
-            .routes-container {
+            .header, .routes-container {
                 padding-left: 20px;
                 padding-right: 20px;
-                padding-top: 100px;
             }
 
-            .route-item {
-                padding: 15px 0;
+            .route-content {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 25px 0;
             }
 
-            .route-title {
-                font-size: 16px;
-            }
-
-            .route-description {
-                font-size: 13px;
+            .route-info {
+                margin-right: 0;
+                margin-bottom: 20px;
+                width: 100%;
             }
 
             .route-image {
-                width: 50px;
-                height: 50px;
+                width: 60px;
+                height: 60px;
+                font-size: 1.2rem;
+                align-self: flex-end;
             }
 
-            .detail-header h1 {
-                font-size: 36px;
-            }
-
-            .two-column-layout {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .back-button {
-                right: 20px;
+            .route-card:hover {
+                padding-left: 5px;
             }
         }
 
-        /* Animation for page transitions */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.6s ease forwards;
+        .route-stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: #777;
         }
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .stat {
+            color: #888;
+        }
+
+        /* Subtle hover line effect */
+        .route-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #333;
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+            transform-origin: bottom;
+        }
+
+        .route-card:hover::before {
+            transform: scaleY(1);
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <a href="index.html" class="site-title">laura lindsey</a>
-        <nav>
-            <ul>
-                <li><a href="work.html">WORK</a></li>
-                <li><a href="blog.html">BLOG</a></li>
-                <li><a href="CV.html">CV</a></li>
-                <li>herridgellaura@gmail.com</li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Main Page -->
-    <div id="main-page" class="main-page">
-        <div class="routes-container">
-            
-            <div class="route-item" onclick="showDetailPage('post1')">
-    <div class="route-content">
-        <div class="route-title"><li><a href="thecoast.html">the pacific coast, victoria BC to san francisco</a></li>
-        <div class="route-description">september-october 2024</div>
-    </div>
-    <div class="route-image">
-                    <img src="000032.JPG" alt="bikes">
-                </div>
-</div>
-            
-            <div class="route-item" onclick="showDetailPage('post2')">
-                <div class="route-content">
-                    <div class="route-title">big boy birthday, galiano island</div>
-                    <div class="route-description">april 2024</div>
-                </div>
-                <div class="route-image">
-                    <img src="000034.jpg" alt="Workshop tools">
-                </div>
-            </div>
-            
-            <div class="route-item" onclick="showDetailPage('post3')">
-                <div class="route-content">
-                    <div class="route-title">Craft & Context</div>
-                    <div class="route-description">Examining how traditional techniques find new meaning in contemporary settings.</div>
-                </div>
-                <div class="route-image">
-                    <img src="https://images.unsplash.com/photo-1565464027194-7957a2295fb7?w=120&h=120&fit=crop&crop=center" alt="Traditional pottery">
-                </div>
-            </div>
-            
-            <div class="route-item" onclick="showDetailPage('post4')">
-                <div class="route-content">
-                    <div class="route-title">Making & Unmaking</div>
-                    <div class="route-description">The cyclical nature of creation and destruction in material practice.</div>
-                </div>
-                <div class="route-image">
-                    <img src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=120&h=120&fit=crop&crop=center" alt="Clay sculpture">
-                </div>
-            </div>
-            
-            <div class="route-item" onclick="showDetailPage('post5')">
-                <div class="route-content">
-                    <div class="route-title">Field Research</div>
-                    <div class="route-description">Documenting encounters with makers, materials, and methods in various locations.</div>
-                </div>
-                <div class="route-image">
-                    <img src="https://images.unsplash.com/photo-1617469767053-d3b523a0b982?w=120&h=120&fit=crop&crop=center" alt="Field notes">
-                </div>
-            </div>
-            
-            <div class="route-item" onclick="showDetailPage('post6')">
-                <div class="route-content">
-                    <div class="route-title">Seasonal Rhythms</div>
-                    <div class="route-description">How the changing seasons influence material choice and making processes.</div>
-                </div>
-                <div class="route-image">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&crop=center" alt="Natural materials">
-                </div>
-            </div>
-            
-        </div>
+    <div class="header">
+        <h1>routes</h1>
+        <p>A collection of cycling journeys through varied landscapes and urban environments, each offering its own character and challenge.</p>
     </div>
 
-    <!-- Detail Pages -->
-    <!-- Post 1 Detail -->
-    <div id="post1-page" class="detail-page">
-        <button class="back-button" onclick="showMainPage()">← back</button>
-        
-        <div class="detail-header fade-in">
-            <h1>the pacific coast</h1>
-            <p class="subtitle">victoria bc, to san francisco california, september 2024</p>
-        </div>
-        
-        <div class="detail-content">
-            <div class="content-block fade-in">
-                <div class="text-block">
-                    <p>There's a moment in every making process where the material begins to speak back. It's subtle at first—a resistance in the thread, an unexpected grain in the wood, a way the clay wants to move that wasn't planned.</p>
-                    <p>This morning, working on a new weaving piece, I encountered one of these moments. The linen I've been using, which had seemed so compliant in previous sessions, suddenly felt different under my fingers. More assertive, somehow. More itself.</p>
-                </div>
-            </div>
-            
-            <div class="content-block fade-in">
-                <div class="image-block">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=500&fit=crop&crop=center" alt="Work in progress">
-                    <p class="image-caption">Morning light on the loom, March 2025</p>
-                </div>
-            </div>
-            
-            <div class="content-block fade-in">
-                <div class="text-block">
-                    <h3>Listening to Materials</h3>
-                    <p>Richard Sennett writes about the craftsperson's ability to develop what he calls "intelligent hand"—a form of knowledge that emerges through sustained physical engagement with materials. But I think there's another dimension to this relationship that often goes unmentioned: the material's own agency in the making process.</p>
-                    <p>When I speak of materials "speaking back," I don't mean this metaphorically. There's a real dialogue happening, a negotiation between my intentions and the material's inherent properties and preferences.</p>
-                </div>
-            </div>
-            
-            <div class="content-block fade-in">
-                <div class="map-block">
-                    <p class="map-placeholder">[Embedded Map - Fiber Sources & Mills Visited]</p>
-                </div>
-            </div>
-            
-            <div class="content-block fade-in">
-                <div class="two-column-layout">
-                    <div class="image-block">
-                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&crop=center" alt="Detail of weaving">
-                        <p class="image-caption">Detail showing where the conversation began</p>
+    <div class="routes-container">
+        <div class="route-card">
+            <div class="route-content">
+                <div class="route-info">
+                    <div class="route-year">2024</div>
+                    <h2 class="route-title">seawall adventure</h2>
+                    <div class="route-meta">41.5 km, North Vancouver</div>
+                    <p class="route-description">A continuous path along the water's edge, where the rhythm of pedaling synchronizes with the gentle lapping of waves. The route traces the boundary between urban development and natural coastline, offering moments of contemplation amid the city's pulse.</p>
+                    <div class="route-stats">
+                        <span class="stat">2.5 hours</span>
+                        <span class="stat">150m elevation</span>
                     </div>
-                    <div class="text-block">
-                        <h3>The Ethics of Making</h3>
-                        <p>This raises questions about the ethics of making. If materials have their own preferences and tendencies, what does it mean to force them into forms they resist? How do we balance creative vision with material integrity?</p>
-                        <p>I'm beginning to think that the best work emerges not from imposing will upon matter, but from finding where human intention and material possibility align.</p>
+                    <div class="materials">asphalt, ocean breeze, mountain views</div>
+                </div>
+                <div class="route-image">~</div>
+            </div>
+        </div>
+
+        <div class="route-card">
+            <div class="route-content">
+                <div class="route-info">
+                    <div class="route-year">2024</div>
+                    <h2 class="route-title">urban weaving</h2>
+                    <div class="route-meta">43 km, Vancouver</div>
+                    <p class="route-description">Threading through the city's fabric, this route connects disparate neighborhoods through dedicated pathways and quiet streets. Each district reveals its own character while maintaining continuity in the journey's narrative structure.</p>
+                    <div class="route-stats">
+                        <span class="stat">3 hours</span>
+                        <span class="stat">280m elevation</span>
                     </div>
+                    <div class="materials">concrete, community gardens, architectural fragments</div>
                 </div>
+                <div class="route-image">◦</div>
             </div>
         </div>
-    </div>
 
-    <!-- Post 2 Detail -->
-    <div id="post2-page" class="detail-page">
-        <button class="back-button" onclick="showMainPage()">← back</button>
-        
-        <div class="detail-header fade-in">
-            <h1>Studio Notes</h1>
-            <p class="subtitle">Daily observations from the workshop - March 8, 2025</p>
-        </div>
-        
-        <div class="detail-content">
-            <div class="content-block fade-in">
-                <div class="text-block">
-                    <p>Tuesday morning, 8:47 AM. The studio is cold—forgot to turn on the heat yesterday evening. My hands move slowly as I prepare the day's work, waiting for warmth to return to my fingers.</p>
-                    <p>There's something about the temperature that affects not just comfort, but the quality of attention I can bring to the work. Cold hands are clumsy hands, but they're also more sensitive to texture, more aware of the materials they encounter.</p>
-                </div>
-            </div>
-            
-            <div class="content-block fade-in">
-                <div class="image-block">
-                    <img src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=800&h=500&fit=crop&crop=center" alt="Morning studio setup">
-                    <p class="image-caption">Early morning light in the workshop</p>
-                </div>
-            </div>
-            
-            <div class="content-block fade-in">
-                <div class="text-block">
-                    <h3>Rhythms and Routines</h3>
-                    <p>Every maker develops their rhythms. Mine tend to follow the light—starting with detailed work when the morning sun streams through the east window, moving to rougher preparation tasks as the day progresses and shadows lengthen.</p>
-                </div>
-            </div>
-            
-            <div class="content-block fade-in">
-                <div class="two-column-layout">
-                    <div class="text-block">
-                        <p>Today I'm working on preparations for the new candlestand series. The wood needs to be cut to rough dimensions before I can begin thinking about joinery and final shaping.</p>
-                        <p>But first, coffee. Always coffee.</p>
+        <div class="route-card">
+            <div class="route-content">
+                <div class="route-info">
+                    <div class="route-year">2023</div>
+                    <h2 class="route-title">valley meditation</h2>
+                    <div class="route-meta">40 km, Squamish</div>
+                    <p class="route-description">Enclosed by towering peaks, this valley route creates an intimate dialogue between rider and landscape. The path follows natural contours, revealing and concealing vistas in measured intervals, each turn offering a reframed perspective.</p>
+                    <div class="route-stats">
+                        <span class="stat">3.5 hours</span>
+                        <span class="stat">520m elevation</span>
                     </div>
-                    <div class="image-block">
-                        <img src="https://images.unsplash.com/photo-1604709177225-055f99402ea3?w=400&h=300&fit=crop&crop=center" alt="Work surface">
-                        <p class="image-caption">Tools and materials ready for the day</p>
+                    <div class="materials">gravel, granite, alpine air</div>
+                </div>
+                <div class="route-image">△</div>
+            </div>
+        </div>
+
+        <div class="route-card">
+            <div class="route-content">
+                <div class="route-info">
+                    <div class="route-year">2023</div>
+                    <h2 class="route-title">agricultural rhythm</h2>
+                    <div class="route-meta">73 km, Abbotsford</div>
+                    <p class="route-description">Rolling through cultivated fields and heritage farmland, this extended route follows the seasonal patterns of agricultural life. The landscape shifts with planting and harvest cycles, creating a temporal dimension to the spatial journey.</p>
+                    <div class="route-stats">
+                        <span class="stat">4.5 hours</span>
+                        <span class="stat">680m elevation</span>
                     </div>
+                    <div class="materials">earth, heritage barns, seasonal crops</div>
                 </div>
+                <div class="route-image">≋</div>
             </div>
         </div>
-    </div>
 
-    <!-- Additional blog post pages -->
-    <div id="post3-page" class="detail-page">
-        <button class="back-button" onclick="showMainPage()">← back</button>
-        <div class="detail-header fade-in">
-            <h1>Craft & Context</h1>
-            <p class="subtitle">Examining how traditional techniques find new meaning in contemporary settings - February 28, 2025</p>
-        </div>
-        <div class="detail-content">
-            <div class="content-block fade-in">
-                <div class="text-block">
-                    <p>The question that keeps arising in conversations about contemporary craft: does context change meaning? When a traditional technique is employed in a gallery rather than a home, in an art school rather than a guild, does something fundamental shift?</p>
+        <div class="route-card">
+            <div class="route-content">
+                <div class="route-info">
+                    <div class="route-year">2022</div>
+                    <h2 class="route-title">coastal elevation</h2>
+                    <div class="route-meta">55 km, West Vancouver</div>
+                    <p class="route-description">Ascending through residential terraces toward panoramic viewpoints, this route explores the relationship between elevation and perspective. Each switchback reveals new layers of the coastal landscape, building toward moments of expansive revelation.</p>
+                    <div class="route-stats">
+                        <span class="stat">4 hours</span>
+                        <span class="stat">750m elevation</span>
+                    </div>
+                    <div class="materials">cedar, stone retaining walls, pacific horizon</div>
                 </div>
+                <div class="route-image">⟋</div>
             </div>
         </div>
-    </div>
 
-    <div id="post4-page" class="detail-page">
-        <button class="back-button" onclick="showMainPage()">← back</button>
-        <div class="detail-header fade-in">
-            <h1>Making & Unmaking</h1>
-            <p class="subtitle">The cyclical nature of creation and destruction in material practice - February 20, 2025</p>
-        </div>
-    </div>
-
-    <div id="post5-page" class="detail-page">
-        <button class="back-button" onclick="showMainPage()">← back</button>
-        <div class="detail-header fade-in">
-            <h1>Field Research</h1>
-            <p class="subtitle">Documenting encounters with makers, materials, methods - February 12, 2025</p>
-        </div>
-    </div>
-
-    <div id="post6-page" class="detail-page">
-        <button class="back-button" onclick="showMainPage()">← back</button>
-        <div class="detail-header fade-in">
-            <h1>Seasonal Rhythms</h1>
-            <p class="subtitle">How the changing seasons influence material choice and making processes - February 5, 2025</p>
+        <div class="route-card">
+            <div class="route-content">
+                <div class="route-info">
+                    <div class="route-year">2022</div>
+                    <h2 class="route-title">alpine circuit</h2>
+                    <div class="route-meta">47.5 km, Whistler</div>
+                    <p class="route-description">Navigating mountain terrain where the path becomes conversation with topography. Technical sections demand presence and response, while open stretches allow for contemplation of the larger alpine ecosystem and its seasonal transformations.</p>
+                    <div class="route-stats">
+                        <span class="stat">4 hours</span>
+                        <span class="stat">890m elevation</span>
+                    </div>
+                    <div class="materials">mountain pine, granite outcrops, glacial streams</div>
+                </div>
+                <div class="route-image">⧨</div>
+            </div>
         </div>
     </div>
 
     <script>
-        function showDetailPage(postId) {
-            // Hide main page
-            document.getElementById('main-page').style.display = 'none';
-            
-            // Hide all detail pages
-            const detailPages = document.querySelectorAll('.detail-page');
-            detailPages.forEach(page => {
-                page.classList.remove('active');
+        document.querySelectorAll('.route-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const routeTitle = this.querySelector('.route-title').textContent;
+                console.log(`Navigate to route: ${routeTitle}`);
+                // Add your navigation logic here
             });
-            
-            // Show selected detail page
-            const targetPage = document.getElementById(postId + '-page');
-            if (targetPage) {
-                targetPage.classList.add('active');
+        });
+
+        // Subtle entrance animation
+        window.addEventListener('load', () => {
+            const cards = document.querySelectorAll('.route-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
                 
-                // Reset and trigger animations
-                const fadeElements = targetPage.querySelectorAll('.fade-in');
-                fadeElements.forEach((element, index) => {
-                    element.style.animation = 'none';
-                    element.style.opacity = '0';
-                    element.style.transform = 'translateY(20px)';
-                    
-                    setTimeout(() => {
-                        element.style.animation = `fadeInUp 0.6s ease ${index * 0.1}s forwards`;
-                    }, 50);
-                });
-            }
-        }
-
-        function showMainPage() {
-            // Hide all detail pages
-            const detailPages = document.querySelectorAll('.detail-page');
-            detailPages.forEach(page => {
-                page.classList.remove('active');
+                setTimeout(() => {
+                    card.style.transition = 'all 0.8s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
             });
-            
-            // Show main page
-            document.getElementById('main-page').style.display = 'block';
-        }
-
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-            showMainPage();
         });
     </script>
 </body>
