@@ -1,1 +1,256 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>seawall adventure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: #fafafa;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .nav-back {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px 0;
+        }
+
+        .nav-back a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-back a:hover {
+            color: #333;
+        }
+
+        .article-header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .route-meta {
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 12px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: normal;
+            color: #333;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .route-summary {
+            font-size: 1rem;
+            color: #666;
+            font-style: italic;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .route-details {
+            display: flex;
+            gap: 30px;
+            font-size: 0.85rem;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .materials {
+            font-size: 0.85rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        .article-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .content-block {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 40px;
+        }
+
+        .content-image {
+            width: 100%;
+            height: 300px;
+            background: #e8e8e8;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 40px;
+        }
+
+        .content-image.tall {
+            height: 400px;
+        }
+
+        .content-image.wide {
+            grid-column: 1 / -1;
+            height: 350px;
+        }
+
+        .image-caption {
+            font-size: 0.8rem;
+            color: #888;
+            font-style: italic;
+            margin-top: -30px;
+            margin-bottom: 40px;
+        }
+
+        .full-width-section {
+            grid-column: 1 / -1;
+            margin: 40px 0;
+        }
+
+        .quote-block {
+            border-left: 2px solid #333;
+            padding-left: 30px;
+            margin: 40px 0;
+            font-style: italic;
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .content-image.wide {
+                grid-column: 1;
+            }
+
+            .full-width-section {
+                grid-column: 1;
+            }
+
+            .route-details {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-back">
+        <a href="#" onclick="history.back()">← back to routes</a>
+    </div>
+
+    <header class="article-header">
+        <div class="route-meta">2024</div>
+        <h1 class="article-title">seawall adventure</h1>
+        <p class="route-summary">41.5 km, North Vancouver — A continuous path along the water's edge, where the rhythm of pedaling synchronizes with the gentle lapping of waves.</p>
+        <div class="route-details">
+            <span>2.5 hours</span>
+            <span>150m elevation</span>
+            <span>moderate difficulty</span>
+        </div>
+        <div class="materials">asphalt, ocean breeze, mountain views</div>
+    </header>
+
+    <main class="article-content">
+        <div class="content-grid">
+            <div class="content-block">
+                <div class="content-image">
+                    [Starting point - Seawall entrance]
+                </div>
+                <div class="image-caption">Coal Harbour marina at dawn, where the urban seawall begins its coastal journey</div>
+                
+                <p class="content-text">The seawall begins where the city meets the water, a precise line drawn between human intention and natural force. Here, at Coal Harbour, the morning light catches the surface of the inlet, creating patterns that shift with each passing moment.</p>
+            </div>
+
+            <div class="content-block">
+                <p class="content-text">This route emerged from a simple question: what happens when we follow the edge? The seawall provides an answer that unfolds over 41 kilometers, each section revealing different relationships between the built environment and coastal landscape.</p>
+
+                <div class="content-image">
+                    [Cyclist on seawall with mountains]
+                </div>
+                <div class="image-caption">The rhythm of cycling along English Bay, with the North Shore mountains as constant companions</div>
+            </div>
+
+            <div class="full-width-section">
+                <div class="content-image wide">
+                    [Panoramic view of English Bay]
+                </div>
+                <div class="image-caption">English Bay opens into expansive views, where the seawall curves to embrace the shoreline</div>
+            </div>
+
+            <div class="content-block">
+                <p class="content-text">The seawall's genius lies in its consistency of purpose coupled with constant variation in experience. Each kilometer presents new vantage points, different qualities of light, changing relationships between path and water.</p>
+
+                <div class="quote-block">
+                    "To ride the seawall is to trace the boundary between what we have built and what remains beyond our construction—the ocean, the mountains, the sky."
+                </div>
+            </div>
+
+            <div class="content-block">
+                <div class="content-image tall">
+                    [Sunset Point detail]
+                </div>
+                <div class="image-caption">Sunset Beach, where the seawall creates intimate viewing spaces within the larger coastal experience</div>
+
+                <p class="content-text">At Sunset Beach, the path widens into viewing areas that function as outdoor rooms. These spaces invite pause, creating opportunities for contemplation within the momentum of the ride.</p>
+            </div>
+
+            <div class="content-block">
+                <p class="content-text">The technical aspects of the route—its gentle grades, smooth surface, clear sightlines—fade into background as the larger experience takes hold. This is infrastructure that succeeds by disappearing, allowing direct engagement with the revealed landscape.</p>
+            </div>
+
+            <div class="content-block">
+                <div class="content-image">
+                    [Stanley Park section]
+                </div>
+                <div class="image-caption">Entering Stanley Park, where the seawall becomes a thread connecting forest and shore</div>
+
+                <p class="content-text">Stanley Park transforms the experience from urban waterfront to something approaching wilderness, though the path remains constant. The seawall demonstrates its capacity to adapt to different contexts while maintaining its essential character.</p>
+            </div>
+
+            <div class="content-block">
+                <p class="content-text">What remains after riding the seawall is not just the physical experience of distance covered, but a deeper understanding of how thoughtful infrastructure can reveal the character of place. The path becomes a lens through which to see the city's relationship with its natural setting.</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
