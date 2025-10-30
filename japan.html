@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shikoku crossing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: #fafafa;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .nav-back {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px 0;
+        }
+
+        .nav-back a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-back a:hover {
+            color: #333;
+        }
+
+        .route-header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .route-title {
+            font-size: 2.5rem;
+            font-weight: normal;
+            color: #333;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .route-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 40px;
+            max-width: 700px;
+        }
+
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            background: #e8e8e8;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .route-stats {
+            background: white;
+            border: 1px solid #eee;
+            padding: 25px;
+            height: fit-content;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .stat:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .stat-value {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: normal;
+            color: #333;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .main-content {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .main-content p {
+            margin-bottom: 20px;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 20px;
+            align-self: start;
+        }
+
+        .info-box {
+            background: white;
+            border: 1px solid #eee;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .info-box h3 {
+            font-size: 1rem;
+            font-weight: normal;
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-box ul {
+            list-style: none;
+        }
+
+        .info-box li {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .info-box li:before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: #999;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            background: #e8e8e8;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        .gallery-image.wide {
+            grid-column: 1 / -1;
+            height: 300px;
+        }
+
+        .image-caption {
+            font-size: 0.8rem;
+            color: #888;
+            font-style: italic;
+            margin-top: 8px;
+        }
+
+        .route-map {
+            width: 100%;
+            height: 400px;
+            background: #e8e8e8;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+            margin: 40px 0;
+        }
+
+        .day-itinerary {
+            margin-bottom: 40px;
+        }
+
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .day-title {
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .day-stats {
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .day-description {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 968px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+            }
+
+            .route-stats {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .stat {
+                padding: 0;
+                border-bottom: none;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .image-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-image.wide {
+                grid-column: 1;
+            }
+        }
+
+        .quote-callout {
+            background: #f8f8f8;
+            border-left: 3px solid #333;
+            padding: 25px;
+            margin: 40px 0;
+            font-style: italic;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-back">
+        <a href="blog.html">← back to rides</a>
+    </div>
+
+    <header class="route-header">
+        <h1 class="route-title">shikoku crossing</h1>
+        <p class="route-subtitle">Our first truly international trip, starting with unpacking our boxes in Fukuoka, following a six day course we had planned across Shikoku, and leaving the rest to negotiate as we go.</p>
+
+        <div class="hero-section">
+            <div class="hero-image">
+                [Hero image - Shikoku coastline at dawn]
+            </div>
+            
+            <div class="route-stats">
+                <div class="stat">
+                    <span class="stat-label">Distance</span>
+                    <span class="stat-value">450 km</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Duration</span>
+                    <span class="stat-value">6 days</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Elevation</span>
+                    <span class="stat-value">3,200 m</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Terrain</span>
+                    <span class="stat-value">mixed</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Season</span>
+                    <span class="stat-value">spring</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="content-section">
+        <div class="content-grid">
+            <div class="main-content">
+                <h2 class="section-title">overview</h2>
+                
+                <p>The decision to ship our bikes to Japan marked a threshold between planning and commitment. After months of studying maps and researching routes, the act of boxing our gear and releasing it to international freight transformed abstract possibility into tangible journey. When we arrived in Fukuoka to reclaim those boxes, jet-lagged and uncertain, the adventure officially began.</p>
+
+                <p>Shikoku, Japan's fourth-largest island, offered the perfect canvas for our first international bicycle touring experience. Less touristed than Honshu yet thoroughly connected by roads and infrastructure, the island balances accessibility with a sense of discovery. The famous 88-temple pilgrimage circuit winds around its perimeter, but our route would cut across the interior, threading together coastal roads, mountain passes, and rural valleys.</p>
+
+                <div class="quote-callout">
+                    "There's a particular vulnerability that comes with cycling in a place where you don't speak the language—every interaction becomes more intentional, more carefully negotiated. The bike becomes not just transportation but a conversation starter, a universal language of its own."
+                </div>
+
+                <p>We had plotted the first six days in detail: ferry crossings, accommodation stops, estimated mileage. Beyond that, we left space for spontaneity and adaptation. This balance between structure and flexibility would define the journey—enough planning to feel prepared, enough openness to allow for serendipity and response to what we encountered along the way.</p>
+
+                <div class="image-gallery">
+                    <div class="gallery-image">[Unpacking bikes in Fukuoka]</div>
+                    <div class="gallery-image">[First morning - loaded bikes]</div>
+                    <div class="gallery-image wide">[Coastal road view]</div>
+                </div>
+
+                <h2 class="section-title">route highlights</h2>
+
+                <p>The route began along Shikoku's northern coast, where the Seto Inland Sea fragments into countless small islands. Morning light on calm water, fishing boats heading out, the smell of salt and diesel. The coastal roads were mostly flat, allowing us to find our rhythm with fully loaded bikes and adjust to riding on the left side of the road.</p>
+
+                <p>By day three, we turned inland toward the mountains. The climb to Iya Valley tested our conditioning and our gear choices. Steep switchbacks through dense forest, occasional shrines marking the roadside, and very few other cyclists. The valley itself felt suspended in time—traditional thatched-roof houses, vine bridges spanning gorges, and an almost palpable sense of remoteness despite the paved roads.</p>
+
+                <p>What struck us most was the hospitality extended to cyclists. Convenience stores became reliable waypoints for supplies and respite. Small restaurants welcomed us with curiosity about our journey. Several times, locals stopped to offer directions or recommendations, communicating through gesture and broken English, always patient with our attempts at basic Japanese phrases.</p>
+
+                <div class="route-map">
+                    [Interactive route map - Shikoku crossing]
+                </div>
+
+                <h2 class="section-title">daily itinerary</h2>
+
+                <div class="day-itinerary">
+                    <div class="day-header">
+                        <span class="day-title">day one — fukuoka to imabari</span>
+                        <span class="day-stats">85 km / +420 m</span>
+                    </div>
+                    <p class="day-description">Ferry from Fukuoka to Matsuyama, then coastal riding to Imabari. Bike assembly, gear shakedown, and first impressions of cycling in Japan. Mostly flat roads along the Seto Inland Sea, adjusting to traffic patterns and navigation. First convenience store stop becomes a revelation of available supplies.</p>
+                </div>
+
+                <div class="day-itinerary">
+                    <div class="day-header">
+                        <span class="day-title">day two — shimanami kaido</span>
+                        <span class="day-stats">70 km / +380 m</span>
+                    </div>
+                    <p class="day-description">The famous Shimanami Kaido island-hopping route. Six islands connected by bridges with dedicated cycling paths. Stunning bridge architecture and sea views. Moderate climbs to each bridge approach, then exhilarating descents to island level. Stop at Oshima for lunch and local citrus.</p>
+                </div>
+
+                <div class="day-itinerary">
+                    <div class="day-header">
+                        <span class="day-title">day three — mountain transition</span>
+                        <span class="day-stats">65 km / +890 m</span>
+                    </div>
+                    <p class="day-description">Turn inland toward Iya Valley. Significant climbing through forested mountains. Smaller roads, less traffic, more remote feeling. Temperature drops as we gain elevation. First experience with mountain onsen (hot spring) at day's end—essential for recovery.</p>
+                </div>
+
+                <div class="day-itinerary">
+                    <div class="day-header">
+                        <span class="day-title">day four — iya valley</span>
+                        <span class="day-stats">55 km / +720 m</span>
+                    </div>
+                    <p class="day-description">Deep into Iya Valley. Vine bridges, gorge views, traditional architecture. Challenging terrain but extraordinary scenery. Short mileage day allows for exploration and photography. Stay in traditional ryokan with kaiseki dinner.</p>
+                </div>
+
+                <div class="day-itinerary">
+                    <div class="day-header">
+                        <span class="day-title">day five — descent to kochi</span>
+                        <span class="day-stats">78 km / +440 m</span>
+                    </div>
+                    <p class="day-description">Long descent from mountains to Pacific coast. Road conditions vary from excellent to rough. Arrive in Kochi, larger city with castle and market. Fresh seafood and urban amenities after days in rural areas.</p>
+                </div>
+
+                <div class="day-itinerary">
+                    <div class="day-header">
+                        <span class="day-title">day six — pacific coast</span>
+                        <span class="day-stats">92 km / +310 m</span>
+                    </div>
+                    <p class="day-description">Riding east along the Pacific coast. Different character from the Inland Sea—bigger waves, more dramatic coastline. Small fishing villages and secluded beaches. End of planned route; decisions about continuing or adjusting schedule.</p>
+                </div>
+
+                <h2 class="section-title">reflections</h2>
+
+                <p>What began as careful execution of a planned route gradually evolved into something more fluid. By the end of the first week, we'd developed rhythms and intuitions—when to push through a climb, when to stop for photographs, how to read the weather and adjust pace accordingly.</p>
+
+                <p>The bicycle proved to be the perfect vehicle for this kind of cultural immersion. Moving at human speed through the landscape, accessible to spontaneous interactions, capable of reaching both major destinations and hidden corners. We covered distances that would be trivial by car but felt substantial by bike, each kilometer earned through effort and attention.</p>
+
+                <div class="image-gallery">
+                    <div class="gallery-image">[Iya Valley bridge]</div>
+                    <div class="gallery-image">[Mountain pass summit]</div>
+                    <div class="gallery-image">[Pacific coastline]</div>
+                    <div class="gallery-image">[Traditional meal]</div>
+                </div>
+
+                <p>Beyond the six planned days, we continued for another week, making decisions based on weather, energy levels, and recommendations from people we met. The route became less about following a predetermined path and more about responding to opportunities and intuitions as they arose. This balance—between planning and spontaneity, between structure and freedom—became the journey's defining characteristic.</p>
+
+                <p>Shikoku taught us what bicycle touring could be: challenging but manageable, structured yet flexible, solitary yet connected to the places and people we encountered. It set a template we'd carry into future journeys—the confidence that comes from successfully navigating the unfamiliar, the value of leaving room for improvisation, and the understanding that the best routes are often discovered rather than planned.</p>
+            </div>
+
+            <aside class="sidebar">
+                <div class="info-box">
+                    <h3>logistics</h3>
+                    <ul>
+                        <li>Flew into Fukuoka Airport</li>
+                        <li>Bikes shipped via international freight</li>
+                        <li>Mix of hotels, ryokans, and guesthouses</li>
+                        <li>Convenience stores for daily supplies</li>
+                        <li>Limited English in rural areas</li>
+                        <li>Cash preferred outside cities</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>what worked</h3>
+                    <ul>
+                        <li>Detailed first week planning</li>
+                        <li>Offline maps downloaded</li>
+                        <li>Basic Japanese phrases learned</li>
+                        <li>Flexible schedule after day six</li>
+                        <li>Lightweight camping gear carried</li>
+                        <li>Credit card backup for emergencies</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>gear notes</h3>
+                    <ul>
+                        <li>Touring bikes with 35mm tires</li>
+                        <li>Front and rear panniers</li>
+                        <li>Lightweight tent (rarely used)</li>
+                        <li>Minimal clothing rotation</li>
+                        <li>Repair kit and spare tubes</li>
+                        <li>Portable battery and cables</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>best seasons</h3>
+                    <ul>
+                        <li>Spring (March-May) - cherry blossoms</li>
+                        <li>Fall (September-November) - stable weather</li>
+                        <li>Avoid rainy season (June-July)</li>
+                        <li>Summer can be hot and humid</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</body>
+</html>
