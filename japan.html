@@ -18,27 +18,76 @@
             line-height: 1.7;
         }
 
-        .nav-back {
+        .top-nav {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 30px 20px 0;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
         }
 
-        .nav-back a {
+        .nav-name {
+            font-size: 1rem;
+            color: #333;
+            font-weight: normal;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
             color: #666;
             text-decoration: none;
             font-size: 0.9rem;
             transition: color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .nav-back a:hover {
+        .nav-links a:hover {
             color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .top-nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
         }
 
         .route-header {
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
+        }
+
+        .breadcrumb {
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: #333;
+        }
+
+        .breadcrumb a:before {
+            content: "← ";
+            margin-right: 5px;
         }
 
         .route-title {
@@ -298,11 +347,21 @@
     </style>
 </head>
 <body>
-    <div class="nav-back">
-        <a href="blog.html">← back to rides</a>
-    </div>
+    <nav class="top-nav">
+        <div class="nav-name">laura lindsey</div>
+        <div class="nav-links">
+            <a href="https://www.howmanyknotsmakea.net/work.html">work</a>
+            <a href="https://www.howmanyknotsmakea.net/blog.html">blog</a>
+            <a href="https://www.howmanyknotsmakea.net/cv.html">cv</a>
+            <a href="mailto:herridgellaura@gmail.com">herridgellaura@gmail.com</a>
+        </div>
+    </nav>
 
     <header class="route-header">
+        <div class="breadcrumb">
+            <a href="https://www.howmanyknotsmakea.net/blog.html">back to rides</a>
+        </div>
+        
         <h1 class="route-title">shikoku crossing</h1>
         <p class="route-subtitle">Our first truly international trip, starting with unpacking our boxes in Fukuoka, following a six day course we had planned across Shikoku, and leaving the rest to negotiate as we go.</p>
 
